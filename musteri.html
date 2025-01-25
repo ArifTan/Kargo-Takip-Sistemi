@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo Takip Sistemi</title>
+    <style>
+        /* Sayfa genel stil ayarları */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('Ekran görüntüsü 2024-11-07 175535.png') no-repeat center center fixed; /* Fotoğrafın arka plana eklenmesi */
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Kargo formunun kutusunu stilize etme */
+        .kargo-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Hafif şeffaf arka plan */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            right: -300px; /* Tabloyu sağa kaydıran özellik */
+        }
+
+        /* Başlık stil */
+        .kargo-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Input alanlarının stili */
+        .input-container {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-container input,
+        .input-container select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Buton stili */
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Durum mesajının stilizasyonu */
+        #durumSonucu {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="kargo-container" id="kargoContainer">
+        <h2>Müşteri Kargo Takip</h2>
+        <form id="kargoForm" onsubmit="sorgulaKargoDurumu(event)">
+            <div class="input-container">
+                <input type="text" id="kargoKodu" placeholder="Kargo Takip Kodu" required>
+            </div>
+            <div class="input-container">
+                <label for="arac">Hangi araçla gönderdiniz?</label>
+                <div style="margin-top: 10px;"></div>
+                <select id="arac" required>
+                    <option value="" disabled selected>Seçin</option>
+                    <option value="ucak">Uçak</option>
+                    <option value="gemi">Gemi</option>
+                    <option value="tir">Tır</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn-submit">Sorgula</button>
+            </div>
+        </form>
+        <div id="durumSonucu" style="margin-top: 20px; font-size: 18px; color: #333;"></div>
+    </div>
+</body>
+</html>

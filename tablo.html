@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo Tablosu</title>
+    <script src="https://kit.fontawesome.com/22ffbb5dc2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        /* Sağ üst köşedeki çıkış butonu */
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout i {
+            font-size: 24px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .logout i:hover {
+            color: #0056b3;
+        }
+
+        .table-container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Sil ve Düzenle butonları */
+        .delete-button, .edit-button {
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 5px 0; /* Butonlar arasında boşluk */
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .edit-button {
+            background-color: green;
+        }
+
+        .edit-button:hover {
+            background-color: #00bd03;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Çıkış Butonu Sağ Üst Köşede -->
+<div class="logout">
+    <a href="admin.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+</div>
+
+<div class="table-container">
+    <h2>Kargo Tablosu</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Kargo Kodu</th>
+                <th>Ürün Adı</th>
+                <th>Adet</th>
+                <th>Kilo (kg)</th>
+                <th>Alıcı Adı Soyadı</th>
+                <th>Alıcı Telefon Numarası</th>
+                <th>Gönderici Adı Soyadı</th>
+                <th>Tarih</th>
+                <th>Durum</th>
+                <th>Gönderim Şekli</th>
+                <th>Nereye Gönderilecek</th> <!-- Yeni sütun -->
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dinamik veri burada görünecek -->
+            <tr>
+                <td>12345</td>
+                <td>Elektronik</td>
+                <td>5</td>
+                <td>10</td>
+                <td>Ali Veli</td>
+                <td>555-1234</td>
+                <td>Mehmet Yılmaz</td>
+                <td>2024-11-07</td>
+                <td>Yolda</td>
+                <td>Uçak</td>
+                <td>İstanbul</td> <!-- Nereye gönderilecek kısmı -->
+                <td>
+                    <button class="edit-button">Düzenle</button>
+                    <button class="delete-button">Sil</button>
+                </td>
+            </tr>
+            <!-- Diğer satırlar buraya eklenecek -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

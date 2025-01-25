@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kolya Kargo Günlük Masraf Tablosu</title>
+    <script src="https://kit.fontawesome.com/22ffbb5dc2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            background-image: url('Ekran görüntüsü 2024-11-07 173423.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            color: #4a4a4a;
+        }
+
+        .form-container, .table-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-container label, 
+        .form-container input, 
+        .form-container button {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container input {
+            width: 100%;
+            max-width: 100%;
+            min-width: 250px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: -70px; /* Tablo ile buton arasındaki boşluğu daralttım */
+        }
+
+        table, th, td {
+            border: 2px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        nav i {
+            font-size: 24px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        nav i:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logout Icon -->
+    <nav>
+        <a href="admin.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </nav>
+
+    <h1>Kolya Kargo Günlük Masraf Tablosu</h1>
+
+    <!-- Form Başlangıcı -->
+    <div class="form-container">
+        <label for="tarih">Tarih:</label>
+        <input type="date" id="tarih" required>
+        
+        <label for="masraf">Masraf:</label>
+        <input type="text" id="masraf" required>
+        
+        <!-- Kargo Numarası alanı kaldırıldı -->
+        
+        <label for="masrafTutari">Masraf Tutarı:</label>
+        <input type="number" id="masrafTutari" step="0.01" required>
+
+        <button onclick="tabloyaEkle()">Ekle</button>
+    </div>
+    <!-- Form Sonu -->
+
+    <!-- Tablo Başlangıcı -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tarih</th>
+                    <th>Masraf</th>
+                    <th>Masraf Tutarı</th>
+                </tr>
+            </thead>
+            <tbody id="masrafTablosu">
+                <!-- Tablo Satırları JavaScript ile Eklenecek -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Tablo Sonu -->
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolya Kargo Malzeme Stok Takibi</title>
+    <!-- Font Awesome for icon -->
+    <script src="https://kit.fontawesome.com/22ffbb5dc2.js" crossorigin="anonymous"></script>
+    <style>
+        /* CSS tasarım değişmedi */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            /* Arka planı güncelledim */
+            background-image: url('Ekran görüntüsü 2024-11-07 174912.png'); /* Buraya istediğiniz görselin yolunu ekledim */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 95vh;
+            width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1, h2 {
+            color: #353434; /* Başlıkların rengini beyaz yaptım ki arka planla uyumlu olsun */
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Arka planı yarı saydam beyaz yaptım */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        /* Button styled for right alignment */
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        th {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        td {
+            background-color: #ffffff;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .action-buttons button {
+            padding: 5px 10px;
+            background-color: #dc3545;
+        }
+        /* Style for the logout icon */
+        .logout-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .logout-icon:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logout icon (top-right corner) -->
+    <a href="admin.html">
+        <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+    </a>
+
+    <div class="container">
+        <h1>Kolya Kargo Malzeme Stok Takibi</h1>
+
+        <!-- Malzeme Ekleme Formu -->
+        <div class="form-group">
+            <label for="malzeme_turu">Malzeme Türü</label>
+            <select id="malzeme_turu">
+                <option value="bant">Bant</option>
+                <option value="koli">Koli</option>
+                <option value="boardmarker">Boardmarker</option>
+                <option value="streç">Streç</option>
+                <option value="poşet">Poşet</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="malzeme_sayisi">Malzeme Sayısı</label>
+            <input type="number" id="malzeme_sayisi" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="odenen_tutar">Ödenen Tutar (₺)</label>
+            <input type="number" id="odenen_tutar" step="0.01" min="0" required>
+        </div>
+
+        <!-- Button Container for right alignment -->
+        <div class="button-container">
+            <button onclick="malzemeEkle()">Malzeme Ekle</button>
+        </div>
+
+        <!-- Malzemeler Tablosu -->
+        <h2>Malzemeler Listesi</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Malzeme Türü</th>
+                    <th>Malzeme Sayısı</th>
+                    <th>Ödenen Tutar (₺)</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody id="malzeme_listesi">
+                <tr>
+                    <td colspan="4">Henüz malzeme eklenmedi.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

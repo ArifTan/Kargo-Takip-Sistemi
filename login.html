@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Paneli Giriş Ekranı</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background: url('Ekran görüntüsü 2024-11-07 193708.png') no-repeat center center fixed; /* Arka plan resmi ekledik */
+            background-size: auto; /* Resmin tam sayfa kaplamasını sağladık */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Arka planı yarı saydam yaptık */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            position: relative;
+            right: 0; /* Formu sağa kaydırdık */
+            margin-left: 700px; /* Sağdan biraz boşluk bıraktık */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 20px;
+        }
+
+        .btn-login,
+        .btn-register {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-register {
+            background-color: #28a745;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-register:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Giriş Ekranı</h2>
+        <form name="loginForm" id="loginForm" onsubmit="return validateForm()" method="post">
+            <div class="input-container">
+                <input type="text" name="username" placeholder="Kullanıcı adı" required>
+            </div>
+            <div class="input-container">
+                <input type="password" name="password" placeholder="Parola" required>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Beni hatırla</label>
+            </div>
+            <button type="submit" class="btn-login">Giriş</button>
+        </form>
+
+        <form name="registerForm" id="registerForm" style="display:none;" onsubmit="return registerUser()" method="post">
+            <div class="input-container">
+                <input type="text" name="name" placeholder="İsim" required>
+            </div>
+            <div class="input-container">
+                <input type="text" name="surname" placeholder="Soyisim" required>
+            </div>
+            <div class="input-container">
+                <input type="email" name="email" placeholder="E-posta" required>
+            </div>
+            <div class="input-container">
+                <input type="password" name="regPassword" placeholder="Parola" required>
+            </div>
+            <button type="button" class="btn-login" onclick="showLoginForm()">Giriş Yap</button>
+        </form>
+    </div>
+</body>
+</html>

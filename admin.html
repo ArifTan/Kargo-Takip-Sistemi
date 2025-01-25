@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <script src="https://kit.fontawesome.com/22ffbb5dc2.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+
+        .sidebar hr {
+            border: 0;
+            border-top: 2px solid #007bff;
+            width: 80%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .icon {
+            font-size: 24px;
+            color: #007bff;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar .icon:hover {
+            color: #0056b3;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            text-align: center;
+            width: 100%;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            overflow-x: hidden;
+            margin-top: 10px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Kolya Kargo</h2>
+    <hr>
+    <a href="masraf.html">Masraflar</a>
+    <a href="stok.html">Stok</a>
+    <a href="tablo.html">Gönderiler</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="index.html">
+        <i class="fa-solid fa-right-from-bracket icon"></i>
+    </a>
+</div>
+
+<div class="content">
+    <div class="container" id="gonderi">
+        <h2>Yönetici Takip Sistemi</h2>
+
+        <!-- Form Alanları -->
+        <div class="form-group">
+            <input type="text" id="urunadi" placeholder="Ürün Adı">
+        </div>
+        <div class="form-group">
+            <input type="number" id="adet" placeholder="Adet">
+        </div>
+        <div class="form-group">
+            <input type="number" id="kilo" placeholder="Kilo (kg)">
+        </div>
+        <div class="form-group">
+            <input type="text" id="aliciAdi" placeholder="Alıcı Adı Soyadı">
+        </div>
+        <div class="form-group">
+            <input type="text" id="aliciTelefon" placeholder="Alıcı Telefon Numarası">
+        </div>
+        <div class="form-group">
+            <input type="date" id="tarih" placeholder="Tarih">
+        </div>
+        <div class="form-group">
+            <select id="durum">
+                <option value="Hazırlanıyor">Hazırlanıyor</option>
+                <option value="Yolda">Yolda</option>
+                <option value="Teslim Edildi">Teslim Edildi</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" id="gondericiAdi" placeholder="Gönderici Adı Soyadı">
+        </div>
+        <div class="form-group">
+            <select id="gonderimSekli">
+                <option value="Tır">Tır</option>
+                <option value="Gemi">Gemi</option>
+                <option value="Uçak">Uçak</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" id="gonderilecekYer" placeholder="Nereye Gönderilecek">
+        </div>
+
+        <button id="kargoButton" onclick="kargoIsle()">Kargo Ekle</button>
+    </div>
+</div>
+
+<script>
+    async function kargoIsle() {
+        const urunadi = document.getElementById('urunadi').value.trim();
+        const adet = document.getElementById('adet').value.trim();
+        const kilo = document.getElementById('kilo').value.trim();
+        const aliciAdi = document.getElementById('aliciAdi').value.trim();
+        const aliciTelefon = document.getElementById('aliciTelefon').value.trim();
+        const tarih = document.getElementById('tarih').value.trim();
+        const durum = document.getElementById('durum').value.trim();
+        const gondericiAdi = document.getElementById('gondericiAdi').value.trim();
+        const gonderimSekli = document.getElementById('gonderimSekli').value.trim();
+        const gonderilecekYer = document.getElementById('gonderilecekYer').value.trim();
+
+        if (!urunadi || !adet || !kilo || !aliciAdi || !aliciTelefon || !tarih || !durum || !gondericiAdi || !gonderimSekli || !gonderilecekYer) {
+            alert("Lütfen tüm alanları doldurun!");
+            return;
+        }
+
+        const response = await fetch('http://localhost:3000/kargo-ekle', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                urunadi, adet, kilo, aliciAdi, aliciTelefon, tarih, durum, gondericiAdi, gonderimSekli, gonderilecekYer
+            })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            alert('Kargo başarıyla eklendi!');
+            // Formu sıfırlayalım
+            document.getElementById('gonderi').reset();
+        } else {
+            alert('Kargo eklenirken bir hata oluştu!');
+        }
+    }
+</script>
+
+</body>
+</html>
